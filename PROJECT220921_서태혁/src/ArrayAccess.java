@@ -1,6 +1,7 @@
 import java.util.Scanner;
 public class ArrayAccess {
 	public static void main(String[] args) {
+		
 		Scanner scanner = new Scanner(System.in);
 		int intArray[] = new int[5]; // 배열 생성
 		int max=0; // 현재 가장 큰 수
