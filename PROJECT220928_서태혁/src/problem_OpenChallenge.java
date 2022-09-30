@@ -12,7 +12,7 @@ class Player{
 	
 	
 	public String getWordFromUser(){ // 사용자로부터 단어를 입력 받는다.
-		System.out.print("참가자의 이름을 입력하세요>>");
+		System.out.print(playName + ">>");
 		word = scanner.next();
 		return word;
 	}
@@ -44,6 +44,11 @@ public class problem_OpenChallenge {
 	private String word = "아버지"; // 끝말잇기 제시 단어
 	private Player player[]; 
 	
+	public static void main(String[] args) {
+		problem_OpenChallenge WordGameApp = new problem_OpenChallenge();
+		WordGameApp.run(); // 게임 실행
+	}
+	
 	public void run() {
 		System.out.println("끝말잇기 게임을 시작합니다...");
 		System.out.print("게임에 참가하는 인원은 몇명입니까>>");
@@ -57,6 +62,7 @@ public class problem_OpenChallenge {
 			
 			player[i] = new Player(name);
 			}
+		
 		String lastWord = word; // 시작하는 단어 word "아버지"를 lastWord로 초기화
 		
 		System.out.print("시작하는 단어는 ");
@@ -76,14 +82,10 @@ public class problem_OpenChallenge {
 			
 			if(i == n) // 마지막 참가자일 때
 				i = 0; // 다시 첫 번째 참가자 차례
-			
 			lastWord = nextWord;
 			}
 	}
 	
-	public static void main(String[] args) {
-		problem_OpenChallenge WordGameApp = new problem_OpenChallenge();
-		WordGameApp.run(); // 게임 실행
-	}
+	
 
 }
