@@ -12,7 +12,7 @@ class Player{
 	
 	
 	public String getWordFromUser(){ // 사용자로부터 단어를 입력 받는다.
-		System.out.print(playName + ">>");
+		System.out.print(playerName + ">>");
 		word = scanner.next();
 		return word;
 	}
