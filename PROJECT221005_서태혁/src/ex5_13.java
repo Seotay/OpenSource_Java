@@ -21,11 +21,12 @@ class __Circle implements _Shape {
 		return r * r * PI;
 	}
 }
+
 public class ex5_13 {
 
 	public static void main(String[] args) {
 		_Shape donut = new __Circle(10); // 반지름이 10인 원 객체
 		donut.redraw();
 		System.out.println("면적은 " + donut.getArea());
-	}
+		}
 }
