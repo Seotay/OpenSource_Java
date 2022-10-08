@@ -18,13 +18,13 @@ public class InstanceOfEx {
 	}
 
 	public static void main(String[] args) {
-		System.out.print("new Student()->\t");
+		System.out.print("new Student()-> ");
 		print(new Student_());
 		
-		System.out.print("new Researcher()->\t");
+		System.out.print("new Researcher()-> ");
 		print(new Researcher());
 		
-		System.out.print("new Professor()->\t");
+		System.out.print("new Professor()-> ");
 		print(new Professor());
 	}
 
