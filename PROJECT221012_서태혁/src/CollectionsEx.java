@@ -30,6 +30,8 @@ public class CollectionsEx {
 		Collections.sort(myList); // 요소 정렬
 		printList(myList); // 요소 출력
 		
+		Collections.reverse(myList); // 요소의 순서를 반대로
+		printList(myList); // 요소 출력
 		int index = Collections.binarySearch(myList, "아바타") + 1;
 		System.out.println("아바타는 " + index + "번째 요소입니다.");
 		
