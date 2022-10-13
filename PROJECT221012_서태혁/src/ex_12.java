@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.InputMismatchException;
+
 class Word_{
 	private String engWord;
 	private String korWord;

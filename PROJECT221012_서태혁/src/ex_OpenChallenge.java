@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Vector;
 
+
 class Word{
 	private String engWord; // 영어 단어
 	private String korWord; // 한글 단어

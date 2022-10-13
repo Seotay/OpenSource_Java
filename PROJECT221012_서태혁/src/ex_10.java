@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 abstract class _Shape_{ // 추상클래스
 	
 	private _Shape_ next;

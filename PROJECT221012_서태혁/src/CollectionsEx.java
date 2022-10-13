@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class CollectionsEx {
 	
 	static void printList(LinkedList<String> l) {

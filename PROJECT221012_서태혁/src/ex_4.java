@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class ex_4 {
 	static public void print(Vector<Integer> v) {
 		int sum = 0;

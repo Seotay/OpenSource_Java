@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 class Location{
 	private String name;
 	private int lat, lon; // 위도 경도

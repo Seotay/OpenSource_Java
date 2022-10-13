@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 class Student{ // 학생을 표현하는 클래스
 	int id;
 	String tel;

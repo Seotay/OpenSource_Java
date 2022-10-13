@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class ArrayListEx {
 
 	public static void main(String[] args) {

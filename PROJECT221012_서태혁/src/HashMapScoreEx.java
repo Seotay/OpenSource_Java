@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class HashMapScoreEx {
 
 	public static void main(String[] args) {

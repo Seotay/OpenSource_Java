@@ -1,3 +1,4 @@
+
 class GStack<T>{
 	int tos;
 	Object [] stck;

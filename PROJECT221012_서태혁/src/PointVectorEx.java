@@ -1,5 +1,6 @@
 import java.util.Vector;
 
+
 class Point{
 	private int x,y;
 	public Point(int x, int y) {

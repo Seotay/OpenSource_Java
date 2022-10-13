@@ -1,4 +1,3 @@
-
 public class GenericMethodExample {
 	// T가 타입 매개 변수인 제네릭 메소드
 	public static <T> GStack<T> reverse(GStack <T> a){
