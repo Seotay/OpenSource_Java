@@ -1,8 +1,8 @@
 package project;
-
 import javax.swing.*;
 
 import project.Action;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -16,11 +16,11 @@ class frame extends JFrame{
 		setSize(500,200);
 		setLocation(700,300);
 		setTitle("도서관");
-		setLayout(new GridLayout(5,1));
+		setLayout(new GridLayout(5,1)); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	    // panel 객체 배열 생성
-	    JPanel pns[]=new JPanel[5];
+	    JPanel pns[]=new JPanel[6];
 	    for(int i=0; i<4; i++) {
 	    	pns[i]=new JPanel();
 	    	pns[i].setLayout(new GridLayout(0,7));
@@ -30,7 +30,7 @@ class frame extends JFrame{
 	    
 	    // panel 0 (소개 관련)
 	    JLabel[] lbs=new JLabel[6]; // Labels
-	    String[] strs= {"[도서 관리 앱]","[이름]","[출판사]","[저자]","[출판일]" ,"[재고]"};
+	    String[] strs= {"[도서 관리 앱]","[책 번호]","[이름]","[저자]","[출판사]" ,"[출판일]"};
 	    for(int i=0; i<strs.length; i++) {
 	    	lbs[i]=new JLabel(strs[i]);
 	    	pns[0].add(lbs[i]);

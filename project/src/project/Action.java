@@ -11,17 +11,17 @@ class Action extends JFrame implements ActionListener{
 	frame f; // 메인 윈도우 관련 객체 
 	test t; // DB 관련 객체
 	JTextField search_field; // 검색 텍스트 필드
-	JTextField name, author, publisher, date, quantity; // 추가 텍스트 필드 
+	JTextField bookID, name, author, publisher, date; // 추가 텍스트 필드 
 	
 	// panel 1 (도서 추가 관련)에서 객체 생성
-	public Action(frame f, test t, JTextField name, JTextField author, JTextField publisher, JTextField date, JTextField quantity) {
+	public Action(frame f, test t, JTextField bookID, JTextField name, JTextField author, JTextField publisher, JTextField date) {
 		this.f = f;
 		this.t = t;
+		this.bookID = bookID;
 		this.name = name;
 		this.author = author;
 		this.publisher = publisher;
 		this.date = date;
-		this.quantity = quantity;
 	}
 	
 	// panel 2 (도서 조회 관련)에서 객체 생성
@@ -41,31 +41,31 @@ class Action extends JFrame implements ActionListener{
 	public void func1() {
 		// 조건 만족 시 SQL문 실행 
 		try {
+			String i = bookID.getText();
 			String n = name.getText();
 			String a = author.getText();
 			String p = publisher.getText();
 			String d = date.getText();
-			String q = quantity.getText();
 			
 			
 			
 			// 입력 안 들어옴
-			if (n.equals("")||a.equals("")||p.equals("")||d.equals("")||q.equals("")) {
+			if (n.equals("")||i.equals("")||n.equals("")||a.equals("")||p.equals("")||d.equals("")) {
 				f.error_label.setText("입력 없음! ");
 				f.error_label.setForeground(Color.RED);
 			}
 			// 입력 들어옴
 			else {
 				// SQL문 실행
-				t.stmt.executeUpdate("insert into book values('" + n + "', '" + a + " ', '" + p+"' ,  ' " + d +"', '" + q+"');");
+				t.stmt.executeUpdate("insert into book values('" + i + "', '" + n + " ', '" + a +"' ,  ' " + p +"', '" + d+"');");
 				f.error_label.setText("저장 완료!! (전체 목록을 눌러서 확인!!)");
 				f.error_label.setForeground(Color.BLUE);
 				// 입력 초기화
+				bookID.setText(null);
 				name.setText(null);
 				author.setText(null);
 				publisher.setText(null);
 				date.setText(null);
-				quantity.setText(null);
 			}
 		} 
 		// DB Error 
@@ -81,7 +81,7 @@ class Action extends JFrame implements ActionListener{
 	public String[][] func2() {
 		// SQL문 실행
 		try {
-			ResultSet rs = t.stmt.executeQuery("select * from book;");
+			ResultSet rs = t.stmt.executeQuery("SELECT * FROM bookquantity;");
 			// 데이터 확인
 			int rows = 0;
 			if (rs.last()) {
@@ -94,7 +94,6 @@ class Action extends JFrame implements ActionListener{
 				String[][] contents = new String[rows][5]; //
 				
 				int idx=0;
-				
 				
 				while(rs.next()) {
 					contents[idx][0]=rs.getString("name");
@@ -136,7 +135,7 @@ class Action extends JFrame implements ActionListener{
 			String search = search_field.getText();
 			// 입력 들어옴
 			if (!search.equals("")) { // 검색란 입력이 공백이 아니면
-				rs = t.stmt.executeQuery("select * from book where name like '%" + search + "%' or publisher like '%" + search + "' or author like '%" + search + "%';");
+				rs = t.stmt.executeQuery("select * from bookquantity where name like '%" + search + "%' or publisher like '%" + search + "' or author like '%" + search + "%';");
 				
 				// 입력 초기화
 				search_field.setText(null);
@@ -210,8 +209,8 @@ class Action extends JFrame implements ActionListener{
 	    		setLocation(1190,300);
 	    		
 	    		// table setting
-	    		String[] header= {"이름", "저자", "출판사","출판일", "재고"};
-	    		String[][] contents=func2(); // 도서 조회 이벤트 처리 핵심 -> 전체 도서 목록이 담긴 2차원 배열 반환 
+	    		String[] header= {"이름", "저자", "출판사", "출판일", "재고"};
+	    		String[][] contents = func2(); // 도서 조회 이벤트 처리 핵심 -> 전체 도서 목록이 담긴 2차원 배열 반환 
 	    		if(contents != null) {
 		    		JTable table = new JTable(contents, header);
 		    		JScrollPane scrollpane=new JScrollPane(table);
@@ -235,6 +234,7 @@ class Action extends JFrame implements ActionListener{
 		    		add(scrollpane2);
 		    		setVisible(true);
 	    		}
+	    	case "도서 대여":
 	    		break;
 	    }
 
