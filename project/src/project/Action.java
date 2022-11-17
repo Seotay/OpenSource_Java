@@ -95,6 +95,7 @@ class Action extends JFrame implements ActionListener{
 				
 				int idx=0;
 				
+				
 				while(rs.next()) {
 					contents[idx][0]=rs.getString("name");
 					contents[idx][1]=rs.getString("author");
