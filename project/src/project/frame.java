@@ -1,8 +1,7 @@
 package project;
-import javax.swing.*;
 
 import project.Action;
-
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -16,18 +15,25 @@ class frame extends JFrame{
 		setSize(500,200);
 		setLocation(700,300);
 		setTitle("도서관");
-		setLayout(new GridLayout(5,1)); 
+		setLayout(new GridLayout(7,7));  //***
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	    // panel 객체 배열 생성
-	    JPanel pns[]=new JPanel[6];
+	    JPanel pns[]=new JPanel[7]; //***
 	    for(int i=0; i<4; i++) {
 	    	pns[i]=new JPanel();
 	    	pns[i].setLayout(new GridLayout(0,7));
 	    }
- 	pns[4]=new JPanel();
- 	pns[4].setLayout(new GridLayout(1,2));
+	pns[4] = new JPanel();
+	pns[4].setLayout(new GridLayout(0,2));
+	
+	pns[5] = new JPanel();
+	pns[5].setLayout(new GridLayout(0,2));
+	
+ 	pns[6]=new JPanel();
+ 	pns[6].setLayout(new GridLayout(0,2));
 	    
+ 	
 	    // panel 0 (소개 관련)
 	    JLabel[] lbs=new JLabel[6]; // Labels
 	    String[] strs= {"[도서 관리 앱]","[책 번호]","[이름]","[저자]","[출판사]" ,"[출판일]"};
@@ -35,6 +41,7 @@ class frame extends JFrame{
 	    	lbs[i]=new JLabel(strs[i]);
 	    	pns[0].add(lbs[i]);
 	    }
+	    
 	    
 	    // panel 1 (도서 추가 관련) 
 	    JLabel lb1=new JLabel("도서 추가"); // Label
@@ -48,6 +55,7 @@ class frame extends JFrame{
 	    bt1.addActionListener(new Action(this,t,fields[0],fields[1],fields[2], fields[3], fields[4]));
 	    pns[1].add(bt1);
 	    
+	    
 	    // panel 2 (도서 조회 과련) 
 	    JLabel lb2=new JLabel("도서 목록 조회"); // Label
 	    JButton bt2=new JButton("전체 목록"); // Button
@@ -55,6 +63,7 @@ class frame extends JFrame{
 	    bt2.addActionListener(new Action(this,t));
 	    pns[2].add(lb2);
 	    pns[2].add(bt2);
+	    
 	    
 	    // panel 3 (도서 검색 관련) 
 	    JLabel lb3=new JLabel("도서 찾기"); // Label
@@ -65,15 +74,32 @@ class frame extends JFrame{
 	    pns[3].add(search_field);
 	    pns[3].add(bt3);
 	    
-	    // panel 4 (에러 관련)
-	    JLabel lb4=new JLabel("메세지:"); // Label
-	    pns[4].add(lb4);
+	    
+	    // panel 4 (도서 대여 관련)
+	    JLabel lb4 = new JLabel("도서대여 및 반납"); // Label
+	    JButton bt4 = new JButton("도서대여 및 반납");
+	    bt4.addActionListener(new Action(this, t));
+	    pns[5].add(lb4);
+	    pns[5].add(bt4);
+	    
+	    // panel 5 (도서 대여 현황 관련)
+	    JLabel lb5 = new JLabel("도서 대여 현황"); // Label
+	    JButton bt5 = new JButton("도서 대여 현황");
+	    Cursor cursor2 = bt5.getCursor();
+	    bt5.addActionListener(new Action(this, t));
+	    pns[5].add(lb5);
+	    pns[5].add(bt5);
+	    
+	    // panel 6 (에러 관련)
+	    JLabel lb6=new JLabel("메세지:"); // Label
+	    pns[6].add(lb6);
 	    error_label=new JLabel("DB 연결 완료!"); // Label
-	    pns[4].add(error_label);
+	    pns[6].add(error_label);
 
 	    
+	    
 	    // 컴포넌트 배치 및 활성화  
-	    for (int i=0; i<5; i++) {
+	    for (int i=0; i<pns.length; i++) {
 	    	add(pns[i]);
 	    }
 		setVisible(true);
