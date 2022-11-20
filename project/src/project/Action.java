@@ -178,7 +178,7 @@ class Action extends JFrame implements ActionListener{
 				// 데이터 존재
 				if(rows>0) {
 					// 데이터를 2차원 배열에 담아서 리턴 
-					String[][] contents=new String[rows][5];
+					String[][] contents=new String[rows][6];
 					int idx=0;
 					while(rs.next()) {
 						contents[idx][0]=rs.getString("name");
@@ -186,6 +186,7 @@ class Action extends JFrame implements ActionListener{
 						contents[idx][2]=rs.getString("publisher");
 						contents[idx][3]=rs.getString("date");
 						contents[idx][4]=rs.getString("quantity");
+						contents[idx][5]=rs.getString("rquantity");
 						idx++;
 					}	
 					f.error_label.setText("("+search+") 검색 완료!!");
@@ -422,7 +423,7 @@ class Action extends JFrame implements ActionListener{
 	    		setTitle("도서 검색");
 	    		setLocation(1190,500);
 	    		// table setting
-	    		String[] header2= {"이름", "저자", "출판사", "출판일", "재고"};
+	    		String[] header2= {"이름", "저자", "출판사", "출판일", "재고", "남은 재고"};
 	    		String[][] contents2=func3(); // 도서 검색 이벤트 처리 핵심 -> 도서 검색한 목록이 담긴 2차원 배열 반환
 	    		if(contents2 != null) {
 		    		JTable table2 = new JTable(contents2, header2);
