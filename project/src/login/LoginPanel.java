@@ -119,7 +119,6 @@ class LoginPanel extends JPanel implements ActionListener {
 				Connection conn = lp.getConnection();
 				Statement stmt = conn.createStatement();
 				
-				test t = new test(); //////////////////// 관리자로 로그인 했을때 도서 시스템 생성
 				
 				ResultSet rset = stmt.executeQuery(sql_query);
 				rset.next();
@@ -127,6 +126,10 @@ class LoginPanel extends JPanel implements ActionListener {
 				if (pass.equals(rset.getString(1)) && idTextField.getText().equals(admin)) {
 					JOptionPane.showMessageDialog(this, "Login Success", "로그인 성공", 1);
 					lp.card.show(lp.cardPanel, "Admin Page");
+					
+					System.out.println("관리자 로그인");
+					test t = new test(); //////////////////// 관리자로 로그인 했을때 도서 시스템 생성
+					
 				}
 				else if (pass.equals(rset.getString(1))) {
 					JOptionPane.showMessageDialog(this, "Login Success", "로그인 성공", 1);
