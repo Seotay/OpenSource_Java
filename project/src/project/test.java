@@ -39,7 +39,5 @@ public class test {
 		}
 	}
 
-	public static void main(String[] args) {
-		test t = new test(); // DB 연결 및 윈도우 생성
-	}
+
 }

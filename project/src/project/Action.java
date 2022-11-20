@@ -1,5 +1,8 @@
 package project;
 
+import login.*;
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Calendar;
@@ -456,6 +459,8 @@ class Action extends JFrame implements ActionListener{
 
 // class for DB Connection (DB 연결 객체)
 	public static void main(String[] args) {
+		LoginProject lp = new LoginProject();
+		lp.setFrame(lp);
 		test t = new test(); // DB 연결 및 윈도우 생성
 	}
 }
