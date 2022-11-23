@@ -67,7 +67,7 @@ class adminUser implements ActionListener {
 		// TODO Auto-generated method stub
 		try {
 			Connection conn = lp.getConnection();
-			String SQL2 = "delete from user_info where id=?";
+			String SQL2 = "delete from user_info where userID=?";
 			PreparedStatement pstmt = conn.prepareStatement(SQL2);
 
 			if (unregisterID.equals("admin")) {
@@ -94,13 +94,13 @@ class adminUser implements ActionListener {
 		
 		try {
 			Connection conn = lp.getConnection();
-			String SQL = "SELECT ID FROM user_info";
+			String SQL = "SELECT userID FROM user_info";
 			Statement stmt = conn.createStatement();
 
 			ResultSet rs = stmt.executeQuery(SQL);
 
 			while (rs.next()) {
-				list.add(rs.getString("id"));
+				list.add(rs.getString("userID"));
 			}
 
 		} catch (SQLException e) {

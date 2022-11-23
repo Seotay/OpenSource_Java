@@ -113,7 +113,7 @@ class LoginPanel extends JPanel implements ActionListener {
 			String id = idTextField.getText();
 			String pass = passTextField.getText();
 			try {
-				String sql_query = String.format("SELECT password FROM user_info WHERE id = '%s' AND password ='%s'",
+				String sql_query = String.format("SELECT password FROM user_info WHERE userID = '%s' AND password ='%s'",
 						id, pass);
 
 				Connection conn = lp.getConnection();

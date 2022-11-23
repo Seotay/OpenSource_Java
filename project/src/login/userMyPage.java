@@ -102,7 +102,7 @@ class userMyPage extends JPanel implements ActionListener {
 			switch (e.getActionCommand()) {
 
 			case "전화번호 바꾸기":
-				String SQL = "update user_info set phoneNumber=? where id=?";
+				String SQL = "update user_info set phoneNumber=? where userID=?";
 				pstmt = conn.prepareStatement(SQL);
 
 				pstmt.setString(1, changephoneTF.getText());
@@ -114,7 +114,7 @@ class userMyPage extends JPanel implements ActionListener {
 				break;
 
 			case "비밀번호 바꾸기":
-				String SQL1 = "update user_info set password=? where id=?";
+				String SQL1 = "update user_info set password=? where userID=?";
 				pstmt = conn.prepareStatement(SQL1);
 
 				pstmt.setString(1, changepassTF.getText());
@@ -126,7 +126,7 @@ class userMyPage extends JPanel implements ActionListener {
 
 			case "탈퇴":
 
-				String SQL2 = "delete from user_info where id=?";
+				String SQL2 = "delete from user_info where userID=?";
 				pstmt = conn.prepareStatement(SQL2);
 
 				int result = JOptionPane.showConfirmDialog(null, "정말로 탈퇴하시겠습니까?", "Confirm message",

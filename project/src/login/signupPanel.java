@@ -218,7 +218,7 @@ class signupPanel extends JPanel {
 				year = yearTf.getText();
 				phone = phoneTf.getText();
 
-				String sql = "insert into user_info(id, password, name, birthday, sex, phoneNumber) values (?,?,?,?,?,?)";
+				String sql = "insert into user_info(userID, password, username, birthday, sex, phoneNumber) values (?,?,?,?,?,?)";
 
 				Pattern passPattern1 = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$"); //8자 영문+특문+숫자
 				Matcher passMatcher = passPattern1.matcher(pass);

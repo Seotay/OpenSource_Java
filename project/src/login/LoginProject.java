@@ -46,7 +46,7 @@ public class LoginProject {
 	public Connection getConnection() throws SQLException {
 		Connection conn = null;
 
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","0366");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root","0366"); /***/
 
 		return conn;
 	}
