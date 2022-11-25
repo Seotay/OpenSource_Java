@@ -12,11 +12,13 @@ class frame extends JFrame{
 	JLabel error_label;
 	public frame(test t) {		
 		// 윈도우 창 설정
-		setSize(500,200);
-		setLocation(700,300);
+		setSize(625,350);
+		setLocation(5,10);
 		setTitle("도서관");
 		setLayout(new GridLayout(7,7));  //***
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setBackground(Color.GREEN);
+		
 		
 	    // panel 객체 배열 생성
 	    JPanel pns[]=new JPanel[7]; //***
@@ -40,6 +42,7 @@ class frame extends JFrame{
 	    for(int i=0; i<strs.length; i++) {
 	    	lbs[i]=new JLabel(strs[i]);
 	    	pns[0].add(lbs[i]);
+	    	pns[0].setBackground(Color.YELLOW); ////////
 	    }
 	    
 	    
@@ -53,6 +56,7 @@ class frame extends JFrame{
 	    }
 	    JButton bt1=new JButton("추가"); // Button
 	    bt1.addActionListener(new Action(this,t,fields[0],fields[1],fields[2], fields[3], fields[4]));
+	    pns[1].setBackground(Color.LIGHT_GRAY); ////////
 	    pns[1].add(bt1);
 	    
 	    
@@ -61,6 +65,7 @@ class frame extends JFrame{
 	    JButton bt2=new JButton("전체 목록"); // Button
 	    Cursor cursor = bt2.getCursor();
 	    bt2.addActionListener(new Action(this,t));
+	    pns[2].setBackground(Color.LIGHT_GRAY); ////////
 	    pns[2].add(lb2);
 	    pns[2].add(bt2);
 	    
@@ -70,6 +75,7 @@ class frame extends JFrame{
 	    JTextField search_field=new JTextField(); // TextField
 	    JButton bt3=new JButton("검색"); // Button
 	    bt3.addActionListener(new Action(this,t,search_field));
+	    pns[3].setBackground(Color.LIGHT_GRAY); ////////
 	    pns[3].add(lb3);
 	    pns[3].add(search_field);
 	    pns[3].add(bt3);
@@ -79,6 +85,7 @@ class frame extends JFrame{
 	    JLabel lb4 = new JLabel("도서대여 및 반납"); // Label
 	    JButton bt4 = new JButton("도서대여 및 반납");
 	    bt4.addActionListener(new Action(this, t));
+	    pns[5].setBackground(Color.LIGHT_GRAY); ////////
 	    pns[5].add(lb4);
 	    pns[5].add(bt4);
 	    
@@ -87,13 +94,18 @@ class frame extends JFrame{
 	    JButton bt5 = new JButton("도서 대여 현황");
 	    Cursor cursor2 = bt5.getCursor();
 	    bt5.addActionListener(new Action(this, t));
+	    pns[5].setBackground(Color.LIGHT_GRAY); ////////
 	    pns[5].add(lb5);
 	    pns[5].add(bt5);
+	    
+	    // panel 4
+	    pns[4].setBackground(Color.LIGHT_GRAY); ////////
 	    
 	    // panel 6 (에러 관련)
 	    JLabel lb6=new JLabel("메세지:"); // Label
 	    pns[6].add(lb6);
 	    error_label=new JLabel("DB 연결 완료!"); // Label
+	    pns[6].setBackground(Color.LIGHT_GRAY); ////////
 	    pns[6].add(error_label);
 
 	    

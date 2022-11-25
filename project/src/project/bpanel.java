@@ -64,10 +64,9 @@ public class bpanel extends JPanel{
 	
 	
 	JPanel pns3 = new JPanel();
-	pns3.setLayout(new GridLayout(0,2));
-	JLabel j2 = new JLabel("메세지: ");
-	pns3.add(j2);
-	error_label = new JLabel("//");
+	pns3.setLayout(new GridLayout(0,1));
+	
+	error_label = new JLabel("");
 	pns3.add(error_label);
 	add(pns3);
 	

@@ -241,34 +241,68 @@ class Action extends JFrame implements ActionListener{
 			String bd = formatter.format(now); // 빌린 날짜
 			String rd = formatter.format(cal.getTime()); // 반납예정 날짜
 		
+			 ///////////////////////////////////////
 			
 			
 			// 입력 안 들어옴
 			if (b.equals("")||n.equals("")||u.equals("")||bd.equals("")||rd.equals("")) {
 				bp.error_label.setText("입력 없음! ");
 				bp.error_label.setForeground(Color.RED);
+				
 			}
 			// 입력 들어옴
 			else {
 				
-				System.out.println(b);
-				System.out.println(n);
-				System.out.println(u);
-				System.out.println(bd);
-				System.out.println(rd);
+				// 코드 추가(수정)
+				ResultSet rs = t.stmt.executeQuery("select exists(select * from book where bookID = '"+ b + "' and name like '%" + n +"%') as success");
 				
+				if(rs.next() ) { // 다음 행이 존재하면
+					String success = rs.getString("success"); // 입력한 bookID와 name이 book 테이블에 존재하면 = 1 아니면 0
+					System.out.println(success);
+					
+					ResultSet rs1 = t.stmt.executeQuery("select exists(select * from user_info where userID = '"+ u +"') as success");
+					
+					if(rs1.next()) {
+						String success1 = rs1.getString("success");
+						System.out.println(success1);
+
+					
+					if(success.equals("1") && success1.equals("1")) { // bookID, name, userID가 모두 일치할때
+						System.out.println(b);
+						System.out.println(n);
+						System.out.println(u);
+						System.out.println(bd);
+						System.out.println(rd);
+						
+						// SQL문 실행
+						t.stmt.executeUpdate("insert into status values('" + b + "', '" + n + " ', '" + u +"', '"+ bd+"', '" + rd + "');");
+						bp.error_label.setText("도서 대여 완료!");
+						bp.error_label.setForeground(Color.BLUE);
+						// 입력 초기화
+						bookID.setText(null);
+						name.setText(null);
+						userID.setText(null);
+					}
+					else if(!success.equals("1") && success1.equals("1")) { // bookID 또는 name가 일치하지 않을 때
+						bp.error_label.setText("도서 번호: " + b + " 또는 " + "도서 이름: " + n + "가 존재 하지 않습니다.");
+						bp.error_label.setForeground(Color.RED);
+					}
+					else if(success.equals("1") && !success1.equals("1")) { // userID가 일치하지 않을 때
+						bp.error_label.setText("사용자 Id: " + u + "가 존재 하지 않습니다.");
+						bp.error_label.setForeground(Color.RED);
+					}
+					else { // bookID, name, userID가 모두 일치하지 않을 때
+						bp.error_label.setText("도서 번호: " + b + ", 도서 이름: " + n + ", 사용자 Id: "+ u +"가 존재 하지 않습니다.");
+						bp.error_label.setForeground(Color.RED);
+						
+						
+					}
 				
-				
-				
-				// SQL문 실행
-				t.stmt.executeUpdate("insert into status values('" + b + "', '" + n + " ', '" + u +"', '"+ bd+"', '" + rd + "');");
-				bp.error_label.setText("도서 대여 완료!");
-				bp.error_label.setForeground(Color.BLUE);
-				// 입력 초기화
-				bookID.setText(null);
-				name.setText(null);
-				userID.setText(null);
-			}
+					}
+				}
+			}				
+								
+		
 		} 
 		// DB Error 
 		catch (SQLException e1) {
@@ -302,15 +336,28 @@ class Action extends JFrame implements ActionListener{
 							System.out.println(b);
 							System.out.println(n);
 							System.out.println(u);
-			
-							// SQL문 실행
-							t.stmt.executeUpdate("delete from status where bookID like '%" + b + "%' or name like '%"+ n +"%' or userID like '%" + u +"%';");
-							bp.error_label.setText("반납 완료!");
-							bp.error_label.setForeground(Color.BLUE);
-							// 입력 초기화
-							bookID.setText(null);
-							name.setText(null);
-							userID.setText(null);
+							
+							 ResultSet rs = t.stmt.executeQuery("select exists(select * from status where bookID = '" + b +"' and name like '%"+ n +"%' and userID = '" + u +"') as success");
+							
+							if(rs.next()) {
+								String success = rs.getString("success"); // 입력한 bookID와 name이 book 테이블에 존재하면 = 1 아니면 0
+								System.out.println(success);
+								
+								if(success.equals("1")) { // 반납할 bookID, name, userID가 존재 하면 -> 반납완료
+								// SQL문 실행
+								t.stmt.executeUpdate("delete from status where bookID ='" + b + "' and name like '%"+ n +"%' and userID = '" + u +"';");
+								bp.error_label.setText("반납 완료!");
+								bp.error_label.setForeground(Color.BLUE);
+								// 입력 초기화
+								bookID.setText(null);
+								name.setText(null);
+								userID.setText(null);
+								}
+								else {
+									bp.error_label.setText("반납 불가!");
+									bp.error_label.setForeground(Color.RED);
+								}
+							}
 						}
 					} 
 					// DB Error 
@@ -388,9 +435,9 @@ class Action extends JFrame implements ActionListener{
 	    	case "전체 목록":
 	    		// mini-window size, title, location
 		    	getContentPane().removeAll(); // 기존 윈도우 삭제되고 새로운 윈도우 생성 하는데 기존에 안 사라진게 있을 수 있어서 지움
-	    		setSize(400,200);
+		    	setSize(625,200);
 	    		setTitle("전체 목록 조회");
-	    		setLocation(1190,300);
+	    		setLocation(5,360);
 	    		
 	    		// table setting
 	    		String[] header= {"이름", "저자", "출판사", "출판일", "재고", "남은 재고"};
@@ -405,9 +452,9 @@ class Action extends JFrame implements ActionListener{
 	    		
 	    	case "도서 대여 현황":
 	    		getContentPane().removeAll();
-	    		setSize(400, 200);
+	    		setSize(600,200);
 	    		setTitle("도서 대여 현황");
-	    		setLocation(1190,300);
+	    		setLocation(620, 205);
 	    		
 	    		String[] header3 = {"도서 번호", "도서 이름", "사용자", "대여 날짜", "반납 날짜"};
 	    		String[][] contents3 = func6();
@@ -422,9 +469,9 @@ class Action extends JFrame implements ActionListener{
 	    	case "검색":
 	    		// mini-window size, title, location
 		    	getContentPane().removeAll(); // 기존 윈도우 삭제되고 새로운 윈도우 생성하는데 기존에 안 사라진게 있을 수 있어서 지움
-	    		setSize(400,200);
+		    	setSize(600,200);
 	    		setTitle("도서 검색");
-	    		setLocation(1190,500);
+	    		setLocation(620,400);
 	    		// table setting
 	    		String[] header2= {"이름", "저자", "출판사", "출판일", "재고", "남은 재고"};
 	    		String[][] contents2=func3(); // 도서 검색 이벤트 처리 핵심 -> 도서 검색한 목록이 담긴 2차원 배열 반환
@@ -438,9 +485,9 @@ class Action extends JFrame implements ActionListener{
 	    	case "도서대여 및 반납":
 	    		getContentPane().removeAll();
 	    		bpanel bp = new bpanel(t);
-	    		setSize(400,200);
+	    		setSize(600,200);
 	    		setTitle("도서 대여");
-	    		setLocation(1190, 300);
+	    		setLocation(620, 10);
 	    		setLayout(new GridLayout(1,2));	
 	    		this.add(bp);
 	    		setVisible(true);
