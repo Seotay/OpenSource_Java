@@ -34,7 +34,13 @@ class userMyPage extends JPanel implements ActionListener {
 		JLabel mypageLabel = new JLabel("내 정보");
 		mypageLabel.setFont(font);
 		mypageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+		
+		// 내정보 라벨 색 지정
+		mypageLabel.setBackground(Color.ORANGE);
+		mypageLabel.setForeground(Color.white);
+		mypageLabel.setOpaque(true);
+		
+		
 		// center
 
 		centerPanel = new JPanel(new GridBagLayout());
@@ -43,7 +49,12 @@ class userMyPage extends JPanel implements ActionListener {
 		changephoneTF = new JTextField(12);
 		changepassButton = new JButton("비밀번호 바꾸기");
 		changephoneButton = new JButton("전화번호 바꾸기");
-
+		
+		// 전화번호 바꾸기, 비밀번호 바꾸기 색 지정
+		changepassButton.setBackground(Color.ORANGE);
+		changephoneButton.setBackground(Color.ORANGE);
+		
+		
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.insets = new Insets(5, 5, 0, 0);
 
@@ -67,9 +78,18 @@ class userMyPage extends JPanel implements ActionListener {
 		downPanel = new JPanel();
 		logoutButton = new JButton("로그아웃");
 		unregisterButton = new JButton("탈퇴");
+		
+		// 로그아웃 버튼, 탈퇴 버튼 색 지정
+		logoutButton.setBackground(Color.ORANGE);
+		unregisterButton.setBackground(Color.ORANGE);
+		
 		downPanel.add(logoutButton);
 		downPanel.add(unregisterButton);
 
+		// 패널 색 지정
+		centerPanel.setBackground(Color.LIGHT_GRAY);
+		mainPanel.setBackground(Color.BLACK);
+		downPanel.setBackground(Color.GRAY);
 		mainPanel.add(mypageLabel);
 		mainPanel.add(centerPanel);
 		mainPanel.add(downPanel);

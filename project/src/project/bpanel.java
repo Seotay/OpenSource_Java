@@ -23,8 +23,16 @@ public class bpanel extends JPanel{
 	String[] strs = {"[대여 및 반납]","[도서 번호]","[도서 이름]","[사용자ID]"};
 	for(int i = 0; i<strs.length; i++) {
 		lb[i] = new JLabel(strs[i]);
+		
+		// 색지정
+		lb[i].setFont(new Font("Serif", Font.BOLD, 11));
+    	lb[i].setForeground(Color.white);
+    	lb[i].setBackground(Color.black);
+    	lb[i].setOpaque(true);
+		
 		pns0.add(lb[i]);
 	}
+	pns0.setBackground(Color.BLACK);
 	add(pns0);
 	
 	
@@ -42,7 +50,15 @@ public class bpanel extends JPanel{
 	}
 	JButton bt = new JButton("대여");
 	bt.addActionListener(new Action(this, t, fields[0], fields[1], fields[2]));
-	pns1.add(bt);
+	
+	// 색 지정
+	jl.setFont(new Font("Serif", Font.BOLD, 11));
+	jl.setBackground(Color.LIGHT_GRAY);
+	jl.setOpaque(true);
+    bt.setBackground(Color.ORANGE);
+    pns1.setBackground(Color.LIGHT_GRAY); ////////
+	
+    pns1.add(bt);
 	
 	add(pns1);
 	
@@ -59,15 +75,27 @@ public class bpanel extends JPanel{
 	}
 	JButton bt1 = new JButton("반납");
 	bt1.addActionListener(new Action(this, t, fields1[0], fields1[1], fields1[2]));
-	pns2.add(bt1);
+	
+	j1.setFont(new Font("Serif", Font.BOLD, 11));
+	j1.setBackground(Color.LIGHT_GRAY);
+	j1.setOpaque(true);
+    bt1.setBackground(Color.ORANGE);
+    pns1.setBackground(Color.LIGHT_GRAY); ////////
+	
+    pns2.add(bt1);
 	add(pns2);
 	
 	
 	JPanel pns3 = new JPanel();
-	pns3.setLayout(new GridLayout(0,1));
+	pns3.setLayout(new GridLayout(0,2));
+	JLabel j2 = new JLabel("메세지:");
 	
-	error_label = new JLabel("");
+	j2.setFont(new Font("궁서체", Font.BOLD, 11));
+	
+	error_label = new JLabel("도서 대여 및 반납");;
+	pns3.add(j2);
 	pns3.add(error_label);
+	
 	add(pns3);
 	
 	

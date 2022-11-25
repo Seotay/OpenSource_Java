@@ -44,14 +44,45 @@ class signupPanel extends JPanel {
 		subPanel.setLayout(new GridBagLayout());
 		subPanel.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
 
-		JLabel idLabel = new JLabel("아이디 : ");
-		JLabel passLabel = new JLabel("비밀번호 : ");
-		JLabel passReLabel = new JLabel("비밀번호 재확인 : ");
-		JLabel nameLabel = new JLabel("이름 : ");
-		JLabel birthLabel = new JLabel("생년월일 : ");
-		JLabel sexLabel = new JLabel("성별 : ");
-		JLabel phoneLabel = new JLabel("핸드폰번호 : ");
+		JLabel idLabel = new JLabel("  아이디 : ");
+		JLabel passLabel = new JLabel("  비밀번호 : ");
+		JLabel passReLabel = new JLabel("  비밀번호 재확인 : ");
+		JLabel nameLabel = new JLabel("  이름 : ");
+		JLabel birthLabel = new JLabel("  생년월일 : ");
+		JLabel sexLabel = new JLabel("  성별 : ");
+		JLabel phoneLabel = new JLabel("  핸드폰번호 : ");
+		
+		// 라벨 색지정
+		idLabel.setBackground(Color.ORANGE);
+		idLabel.setForeground(Color.black);
+		idLabel.setOpaque(true);
+		
+		passLabel.setBackground(Color.ORANGE);
+		passLabel.setForeground(Color.black);
+		passLabel.setOpaque(true);
 
+		passReLabel.setBackground(Color.ORANGE);
+		passReLabel.setForeground(Color.black);
+		passReLabel.setOpaque(true);
+
+		nameLabel.setBackground(Color.ORANGE);
+		nameLabel.setForeground(Color.black);
+		nameLabel.setOpaque(true);
+
+		birthLabel.setBackground(Color.ORANGE);
+		birthLabel.setForeground(Color.black);
+		birthLabel.setOpaque(true);
+
+		sexLabel.setBackground(Color.ORANGE);
+		sexLabel.setForeground(Color.black);
+		sexLabel.setOpaque(true);
+		
+		phoneLabel.setBackground(Color.ORANGE);
+		phoneLabel.setForeground(Color.black);
+		phoneLabel.setOpaque(true);
+
+
+		
 		idTf = new JTextField(15);
 		passTf = new JPasswordField(15);
 		passReTf = new JPasswordField(15);
@@ -67,6 +98,7 @@ class signupPanel extends JPanel {
 
 		menButton = new JRadioButton("남자");
 		girlButton = new JRadioButton("여자");
+		
 		ButtonGroup sexGroup = new ButtonGroup();
 		sexGroup.add(menButton);
 		sexGroup.add(girlButton);
@@ -156,10 +188,21 @@ class signupPanel extends JPanel {
 		JLabel signupLabel = new JLabel("회원가입 화면 ");
 		signupLabel.setFont(font);
 		signupLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+		
+		// 회원가입 라벨 색 지정
+		signupLabel.setBackground(Color.ORANGE);
+		signupLabel.setForeground(Color.WHITE);
+		signupLabel.setOpaque(true);
+		
 		registerButton = new JButton("회원가입");
 		registerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		// 회원가입 버튼 색 지정
+		registerButton.setBackground(Color.ORANGE);
+		
+		mainPanel.setBackground(Color.black);
+		subPanel.setBackground(Color.LIGHT_GRAY);
+		
 		mainPanel.add(signupLabel);
 		mainPanel.add(subPanel);
 		mainPanel.add(registerButton);

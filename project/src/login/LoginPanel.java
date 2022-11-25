@@ -31,6 +31,10 @@ class LoginPanel extends JPanel implements ActionListener {
 		JPanel centerPanel = new JPanel();
 		JLabel loginLabel = new JLabel("로그인 화면");
 		loginLabel.setFont(font);
+		loginLabel.setForeground(Color.white); ////
+		loginLabel.setBackground(Color.ORANGE); ////
+		loginLabel.setOpaque(true); /////
+		
 		centerPanel.add(loginLabel);
 
 		
@@ -45,12 +49,18 @@ class LoginPanel extends JPanel implements ActionListener {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
+		
+		// 아이디 라벨 색 지정
+		idLabel.setForeground(Color.black); ////
+		idLabel.setBackground(Color.ORANGE); ////
+		idLabel.setOpaque(true); /////
+				
 		gridBagidInfo.add(idLabel, c);
 
 		idTextField = new JTextField(15);
 		c.insets = new Insets(0, 5, 0, 0);
 		c.gridx = 1;
-		c.gridy = 0;
+		c.gridy = 0;	
 		gridBagidInfo.add(idTextField, c);
 
 		JLabel passLabel = new JLabel(" 비밀번호 : ");
@@ -58,6 +68,12 @@ class LoginPanel extends JPanel implements ActionListener {
 		c.gridx = 0;
 		c.gridy = 1;
 		c.insets = new Insets(20, 0, 0, 0);
+		
+		// 비밀번호 라벨 색 지정
+		passLabel.setForeground(Color.black); ////
+		passLabel.setBackground(Color.ORANGE); ////
+		passLabel.setOpaque(true); /////
+		
 		gridBagidInfo.add(passLabel, c);
 
 		passTextField = new JPasswordField(15);
@@ -68,12 +84,30 @@ class LoginPanel extends JPanel implements ActionListener {
 
 		JPanel loginPanel = new JPanel();
 		JButton loginButton = new JButton("로그인");
+		
+		// 로그인 버튼 색 지정
+		loginButton.setBackground(Color.ORANGE);/////////////////
+		
+		
 		loginPanel.add(loginButton);
 
 		JPanel signupPanel = new JPanel();
 		JButton signupButton = new JButton("회원가입");
+		
+		// 회원가입 버튼 색 지정
+		signupButton.setBackground(Color.ORANGE);/////////////////
+		
 		loginPanel.add(signupButton);
-
+		
+		
+		// 패널 색 지정
+		centerPanel.setBackground(Color.BLACK); ////////// 1
+		userPanel.setBackground(Color.GRAY);//////////////// 2
+		gridBagidInfo.setBackground(Color.LIGHT_GRAY); ////////// 3
+		loginPanel.setBackground(Color.GRAY); //////////////  4
+		signupPanel.setBackground(Color.black); ////////// 5
+		
+		
 		mainPanel.add(centerPanel);
 		mainPanel.add(userPanel);
 		mainPanel.add(gridBagidInfo);

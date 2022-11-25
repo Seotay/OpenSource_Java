@@ -24,17 +24,34 @@ class adminUser implements ActionListener {
 		JLabel adminpageLabel = new JLabel("관리자 모드");
 		adminpageLabel.setFont(font);
 		adminpageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		/////////// 1
+		adminpageLabel.setForeground(Color.WHITE); /////////
+		adminpageLabel.setBackground(Color.ORANGE); ////////
+		adminpageLabel.setOpaque(true);
+		
 		JComboBox<String> idComboBox = new JComboBox<String>(idList.toArray(new String[idList.size()]));
 		JButton logoutButton = new JButton("로그아웃");
 		JButton unregisterButton = new JButton("강제탈퇴");
+		
+		// 강제탈퇴, 로그아웃 버튼 색 지정
+		logoutButton.setBackground(Color.ORANGE);//////////////
+		unregisterButton.setBackground(Color.ORANGE);////////////
 
 		JPanel centerPanel = new JPanel();
+		
+		// 패널 색 지정
+		centerPanel.setBackground(Color.GRAY); //////////2
+		
 		centerPanel.add(idComboBox);
 		centerPanel.add(unregisterButton);
 
 		mainPanel = new JPanel();
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		// 매인 패널 색 지정
+		mainPanel.setBackground(Color.BLACK);
+		
 		mainPanel.add(adminpageLabel);
 		mainPanel.add(centerPanel);
 		mainPanel.add(logoutButton);

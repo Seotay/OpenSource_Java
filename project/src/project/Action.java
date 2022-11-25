@@ -445,6 +445,9 @@ class Action extends JFrame implements ActionListener{
 	    		if(contents != null) {
 		    		JTable table = new JTable(contents, header);
 		    		JScrollPane scrollpane=new JScrollPane(table);
+		    		
+		    		table.setBackground(Color.YELLOW);
+		    		
 		    		add(scrollpane);
 		    		setVisible(true);
 	    		}
@@ -461,6 +464,9 @@ class Action extends JFrame implements ActionListener{
 	    		if(contents3 != null) { //////////////////////////
 	    			JTable table3 = new JTable(contents3, header3);
 	    			JScrollPane scrollpane3 = new JScrollPane(table3);
+	    			
+	    			table3.setBackground(Color.YELLOW);
+	    			
 		    		add(scrollpane3);
 		    		setVisible(true);
 	    		}  		
@@ -478,6 +484,9 @@ class Action extends JFrame implements ActionListener{
 	    		if(contents2 != null) {
 		    		JTable table2 = new JTable(contents2, header2);
 		    		JScrollPane scrollpane2 = new JScrollPane(table2);
+		    		
+		    		table2.setBackground(Color.YELLOW);
+		    		
 		    		add(scrollpane2);
 		    		setVisible(true);
 	    		}
